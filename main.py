@@ -82,6 +82,4 @@ def predict(data: LoanApplication):
     }
 
 
-@app.get("/")
-def greet():
-    return {"message": "Good morning"}
+
