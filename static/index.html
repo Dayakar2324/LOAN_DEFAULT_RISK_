@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Loan Risk Predictor</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <header class="hero">
+      <div class="brand"><span class="brand-mark">◆</span> CREDIT<span class="brand-accent">SCOPE</span></div>
+      <div class="eyebrow">MACHINE LEARNING • RISK ANALYSIS</div>
+      <h1>Loan default risk,<br /><span>made understandable.</span></h1>
+      <p>Enter applicant and loan details to estimate default risk with your trained model.</p>
+    </header>
+
+    <main class="layout">
+      <section class="panel form-panel">
+        <div class="panel-heading">
+          <div><div class="section-label">01 / APPLICATION</div><h2>Loan application</h2></div>
+          <span class="pill">11 inputs</span>
+        </div>
+        <form id="loan-form">
+          <div class="group-heading">Applicant details</div>
+          <div class="fields">
+            <label>Age <input id="person_age" type="number" min="19" max="100" step="1" value="28" required /></label>
+            <label>Annual income <input id="person_income" type="number" min="1000.01" step="any" value="50000" required /></label>
+            <label>Home ownership <select id="person_home_ownership" required><option value="">Choose one</option><option value="RENT" selected>Rent</option><option value="OWN">Own</option><option value="MORTGAGE">Mortgage</option><option value="OTHER">Other</option></select></label>
+            <label>Employment length (years) <input id="person_emp_length" type="number" min="0.01" max="61" step="any" value="4" required /></label>
+            <label>Credit history (years) <input id="cb_person_cred_hist_length" type="number" min="1" max="100" step="1" value="5" required /></label>
+            <label>Previous default <select id="cb_person_default_on_file" required><option value="N" selected>No</option><option value="Y">Yes</option></select></label>
+          </div>
+          <div class="group-heading">Loan details</div>
+          <div class="fields">
+            <label>Loan amount <input id="loan_amnt" type="number" min="1001" step="1" value="15000" required /></label>
+            <label>Interest rate (%) <input id="loan_int_rate" type="number" min="0.01" step="any" value="13.5" required /></label>
+            <label>Loan intent <select id="loan_intent" required><option value="">Choose purpose</option><option value="PERSONAL" selected>Personal</option><option value="EDUCATION">Education</option><option value="MEDICAL">Medical</option><option value="VENTURE">Venture</option><option value="HOMEIMPROVEMENT">Home improvement</option><option value="DEBTCONSOLIDATION">Debt consolidation</option></select></label>
+            <label>Loan grade <select id="loan_grade" required><option value="">Choose grade</option><option value="A">A</option><option value="B">B</option><option value="C" selected>C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option></select></label>
+            <label class="wide">Loan-to-income ratio <input id="loan_percent_income" type="number" step="any" readonly /><small>Automatically calculated: loan amount ÷ annual income</small></label>
+          </div>
+          <button id="submit" type="submit"><span id="button-text">Analyze risk</span><span aria-hidden="true">↗</span></button>
+          <p id="error" class="error" role="alert" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <aside class="panel result-panel">
+        <div class="section-label">02 / PREDICTION</div>
+        <h2>Risk assessment</h2>
+        <div id="empty-state" class="empty-state"><div class="empty-icon">◎</div><h3>Ready to assess</h3><p>Submit the application to see the estimated probability of default and predicted risk category.</p></div>
+        <div id="results" hidden aria-live="polite">
+          <div id="risk-badge" class="risk-badge"></div>
+          <div class="value-label">Estimated default probability</div>
+          <div id="risk-value" class="risk-value">—</div>
+          <div class="meter"><div id="meter-fill" class="meter-fill"></div><div id="threshold-marker" class="threshold-marker"></div></div>
+          <div class="meter-ends"><span>0%</span><span>100%</span></div>
+          <div class="metric-row"><span>Decision threshold</span><strong id="threshold-value">—</strong></div>
+          <div class="metric-row"><span>Predicted class</span><strong id="class-value">—</strong></div>
+          <div class="insight" id="insight"></div>
+        </div>
+        <div class="info"><span class="info-icon">ⓘ</span> Educational ML demonstration only. The estimate is not a credit approval decision or a guarantee of repayment/default.</div>
+      </aside>
+    </main>
+    <footer>Loan Risk Classification · Powered by your FastAPI model</footer>
+  </div>
+</body>
+</html>
