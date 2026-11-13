@@ -54,7 +54,7 @@ app = FastAPI(lifespan=lifespan)
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
-@app.get("/admin")
+@app.get("/")
 def admin():
     return FileResponse("static/index.html")
 
