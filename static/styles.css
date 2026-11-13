@@ -1,1 +1,497 @@
-:root{--ink:#18253f;--muted:#65758f;--bg:#f3f6fa;--blue:#285be8;--line:#e4eaf2;--green:#13876d;--red:#c5484c}*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);line-height:1.5}.shell{max-width:1160px;margin:auto;padding:36px 24px 24px}.hero{padding:12px 0 36px}.brand{font-size:14px;font-weight:850;letter-spacing:1.5px;color:#1c3055;margin-bottom:38px}.brand-mark{color:var(--blue);font-size:19px;margin-right:8px}.brand-accent{color:var(--blue)}.eyebrow,.section-label{font-size:10px;font-weight:800;letter-spacing:2.2px;color:#5277ba}.hero h1{font-size:clamp(35px,4vw,54px);line-height:1.13;letter-spacing:-2px;margin:12px 0 14px}.hero h1 span{color:var(--blue)}.hero p{color:var(--muted);font-size:15px;margin:0}.layout{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(290px,1fr);gap:22px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:18px;box-shadow:0 9px 32px rgba(27,52,99,.04);padding:30px}.panel-heading{display:flex;justify-content:space-between;align-items:center}.panel h2{font-size:22px;letter-spacing:-.5px;margin:8px 0 12px}.pill{border:1px solid #dfebfd;background:#f5f9ff;color:#3764bd;border-radius:18px;font-size:12px;padding:5px 11px;font-weight:650}.group-heading{font-size:12px;font-weight:800;letter-spacing:.5px;color:#233657;margin:25px 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px 18px}label{display:flex;flex-direction:column;font-size:12px;font-weight:700;color:#354664;gap:7px}label.wide{grid-column:span 2}input,select{font:inherit;font-size:14px;width:100%;height:43px;background:white;border:1px solid #dce4ef;border-radius:9px;padding:0 12px;color:var(--ink);outline:none}input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(40,91,232,.1)}input[readonly]{background:#f4f7fb;color:#64748b}small{font-size:11px;font-weight:400;color:#8593a7}button{border:0;width:100%;background:var(--blue);color:#fff;border-radius:10px;padding:15px 18px;display:flex;justify-content:space-between;align-items:center;margin-top:25px;font-weight:800;font-size:14px;cursor:pointer}button:hover{background:#194cd9}button:disabled{opacity:.65;cursor:wait}.error{font-size:12px;color:var(--red);margin:12px 0 0;min-height:0}.result-panel{position:sticky;top:24px}.empty-state{text-align:center;padding:60px 14px 68px}.empty-icon{width:76px;height:76px;border-radius:20px;background:#eef3ff;color:var(--blue);display:grid;place-items:center;font-size:47px;margin:0 auto 18px}.empty-state h3{font-size:17px;margin:0 0 6px}.empty-state p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}.risk-badge{display:inline-flex;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:800;margin-top:22px}.risk-badge.low{background:#e3f6ee;color:#0a755c}.risk-badge.high{background:#ffebeb;color:#ad333e}.value-label{font-size:12px;color:var(--muted);margin-top:20px}.risk-value{font-size:52px;font-weight:850;letter-spacing:-2px;margin:0 0 20px}.meter{height:10px;background:#e5eaf2;border-radius:20px;position:relative}.meter-fill{height:100%;width:0;background:var(--green);border-radius:20px;transition:width .45s ease}.threshold-marker{position:absolute;top:-6px;height:22px;width:2px;background:#1e293b}.meter-ends{display:flex;justify-content:space-between;font-size:11px;color:#8b98aa;margin:8px 0 25px}.metric-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:13px}.metric-row span{color:var(--muted)}.metric-row strong{font-size:14px}.insight{font-size:13px;color:#52647f;line-height:1.7;background:#f5f8fd;padding:15px;border-radius:10px;margin-top:13px}.info{border-top:1px solid var(--line);margin-top:25px;padding-top:20px;font-size:11px;line-height:1.6;color:#8591a4}.info-icon{font-size:14px;color:var(--blue);margin-right:4px}footer{text-align:center;padding:28px 0 6px;color:#99a4b5;font-size:11px}[hidden]{display:none!important}@media(max-width:850px){.layout{grid-template-columns:1fr}.result-panel{position:static}.empty-state{padding:30px 14px}.hero{padding-bottom:25px}.brand{margin-bottom:25px}}@media(max-width:540px){.shell{padding:20px 14px}.panel{padding:21px}.fields{grid-template-columns:1fr}label.wide{grid-column:span 1}.hero h1{letter-spacing:-1px}}
+
+/* ========================================
+   1. GENERAL STYLING
+======================================== */
+
+:root {
+    --navy: #17243f;
+    --muted: #64748b;
+    --border: #dce5f1;
+    --background: #f3f6fb;
+    --blue: #315df5;
+
+    --green: #059669;
+    --green-dark: #065f46;
+    --green-light: #ecfdf5;
+
+    --red: #dc2626;
+    --red-dark: #991b1b;
+    --red-light: #fef2f2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--navy);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 36px 24px 60px;
+}
+
+/* ========================================
+   2. PAGE HEADER
+======================================== */
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.eyebrow {
+    display: block;
+    color: #456ac5;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.page-header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+}
+
+.page-header p {
+    font-size: 15px;
+    color: var(--muted);
+}
+
+/* ========================================
+   3. DASHBOARD LAYOUT
+======================================== */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+    align-items: start;
+}
+
+.application-card,
+.assessment-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 28px rgba(20, 38, 74, 0.04);
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+
+.section-heading h2,
+.assessment-card > h2 {
+    font-size: 23px;
+    letter-spacing: -0.6px;
+    font-weight: 800;
+}
+
+.input-badge {
+    font-size: 12px;
+    font-weight: 700;
+    color: #315cca;
+    background: #eff5ff;
+    border: 1px solid #d6e5ff;
+    border-radius: 30px;
+    padding: 6px 12px;
+    white-space: nowrap;
+}
+
+/* ========================================
+   4. LOAN APPLICATION FORM
+======================================== */
+
+.form-section-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 18px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #344461;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    height: 46px;
+    padding: 0 13px;
+    border: 1px solid #d5e0ed;
+    border-radius: 10px;
+    background: white;
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(49, 93, 245, 0.12);
+}
+
+.form-group input[readonly] {
+    background: #f1f5f9;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+.form-group small {
+    color: #8190a7;
+    font-size: 11px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* ========================================
+   5. PREDICTION BUTTON
+======================================== */
+
+.predict-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 11px;
+    background: var(--blue);
+    color: white;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.predict-button:hover {
+    background: #2449cd;
+    transform: translateY(-1px);
+}
+
+.predict-button:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+.error-message {
+    margin-top: 14px;
+    padding: 12px;
+    background: #fff1f2;
+    color: #be123c;
+    border-radius: 9px;
+    font-size: 13px;
+}
+
+.error-message[hidden] {
+    display: none;
+}
+
+/* ========================================
+   6. RISK ASSESSMENT CARD
+======================================== */
+
+.assessment-card {
+    position: sticky;
+    top: 24px;
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.assessment-card > h2 {
+    margin-bottom: 28px;
+}
+
+/* ========================================
+   7. DECISION BANNER
+======================================== */
+
+.decision-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px;
+    background: #f1f5f9;
+    border-radius: 14px;
+    margin-bottom: 28px;
+}
+
+.result-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: #cbd5e1;
+    color: white;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.decision-caption {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 2px;
+}
+
+#decisionText {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+/* ========================================
+   8. PROBABILITY DISPLAY
+======================================== */
+
+.probability-section {
+    margin-bottom: 30px;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 8px;
+}
+
+.probability-value {
+    font-size: 54px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1.15;
+    margin-bottom: 25px;
+}
+
+.probability-track {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    background: #e2e8f0;
+    border-radius: 20px;
+}
+
+.probability-fill {
+    width: 0%;
+    height: 100%;
+    background: #94a3b8;
+    border-radius: inherit;
+    transition: width 0.5s ease;
+}
+
+.threshold-marker {
+    position: absolute;
+    top: -5px;
+    left: 66.39%;
+    width: 3px;
+    height: 20px;
+    background: #1e293b;
+    border-radius: 2px;
+}
+
+.probability-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    color: #8290a6;
+    font-size: 12px;
+}
+
+/* ========================================
+   9. PREDICTION DETAILS
+======================================== */
+
+.assessment-details {
+    border-top: 1px solid var(--border);
+    margin-bottom: 24px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 17px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.detail-row strong {
+    color: var(--navy);
+    font-size: 15px;
+}
+
+.final-note {
+    padding: 17px;
+    background: #f3f6fb;
+    border-radius: 12px;
+    color: #4d5f7f;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.disclaimer {
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: #8190a7;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* ========================================
+   10. LOW RISK - GREEN
+======================================== */
+
+.assessment-card.low-risk {
+    background: #f7fefb;
+    border: 2px solid #86efac;
+    box-shadow: 0 10px 35px rgba(5, 150, 105, 0.10);
+}
+
+.low-risk .decision-banner {
+    background: #dcfce7;
+}
+
+.low-risk .result-icon {
+    background: var(--green);
+    color: white;
+}
+
+.low-risk #decisionText,
+.low-risk .probability-value {
+    color: var(--green-dark);
+}
+
+.low-risk .probability-fill {
+    background: var(--green);
+}
+
+.low-risk .final-note {
+    background: #dcfce7;
+    color: #166534;
+}
+
+/* ========================================
+   11. HIGH RISK - RED
+======================================== */
+
+.assessment-card.high-risk {
+    background: #fff7f7;
+    border: 2px solid #fca5a5;
+    box-shadow: 0 10px 35px rgba(220, 38, 38, 0.12);
+}
+
+.high-risk .decision-banner {
+    background: #fee2e2;
+}
+
+.high-risk .result-icon {
+    background: var(--red);
+    color: white;
+}
+
+.high-risk #decisionText,
+.high-risk .probability-value {
+    color: var(--red-dark);
+}
+
+.high-risk .probability-fill {
+    background: var(--red);
+}
+
+.high-risk .final-note {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ========================================
+   12. RESPONSIVE DESIGN
+======================================== */
+
+@media (max-width: 900px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+    }
+
+    .assessment-card {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px 14px 40px;
+    }
+
+    .page-header h1 {
+        font-size: 27px;
+    }
+
+    .application-card,
+    .assessment-card {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .probability-value {
+        font-size: 44px;
+    }
+
+    #decisionText {
+        font-size: 19px;
+    }
+
+    .result-icon {
+        width: 50px;
+        height: 50px;
+    }
+}
